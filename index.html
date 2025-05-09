@@ -474,6 +474,7 @@
 </html>
   
 
+
   <script>
     function toggleMenu() {
       document.querySelector('.navbar').classList.toggle('menu-ativo');
@@ -502,6 +503,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -513,33 +515,29 @@
             margin: 0;
             display: flex;
             flex-direction: column;
+            font-family: 'Poppins', sans-serif;
         }
 
         main {
-            flex: 1; /* faz o conteúdo principal ocupar o espaço disponível */
+            flex: 1;
         }
 
         footer {
             background: #000;
-            padding: 30px 0;
+            padding: 20px 0; /* Aumentado */
             text-align: center;
             color: #fff;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem; /* Um pouco maior */
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         .footer-container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: auto;
         }
 
-        .footer-container p {
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-
         .footer-links {
-            font-size: 0.9rem;
+            margin-top: 10px;
         }
 
         .footer-links a {
@@ -553,6 +551,21 @@
         .footer-links a:hover {
             color: #a64ca6;
         }
+
+        .creditos {
+            margin-top: 8px;
+            font-size: 0.5 rem; /* Um pouco maior */
+            opacity: 0.85;
+        }
+
+        .creditos a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .creditos a:hover {
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -563,7 +576,11 @@
 
 <footer>
     <div class="footer-container">
-        <p>&copy; 2025 <strong>𝙸𝚗𝚘𝚟𝚊𝚝𝚒𝚘𝚗 𝙷𝚞𝚋</strong> — Todos os direitos reservados.</p>
+        <p>&copy; 2025 <strong>Innovation Hub</strong> — Todos os direitos reservados.</p>
+        <div class="creditos">         
+            <p>Créditos: <a href="https://discord.gg/WszqeMHb" target="_blank">CMSP WEB HACKS (𝓒𝓥𝓐)</a> 
+            <p><span class="icon">❤️</span> Feito com ♥ por <strong>!Marcos Tutoriais (𝓒𝓥𝓐)🥀</strong></p>
+        </div>
         <div class="footer-links">
             <a href="#">Sobre</a> |
             <a href="#">Contato</a> |
@@ -574,8 +591,6 @@
 
 </body>
 </html>
-
-
 
 
 
@@ -712,92 +727,4 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Fundo escuro */
-            z-index: 999;
-            display: none;
-        }
-
-    </style>
-</head>
-<body>
-
-    <!-- Overlay de fundo -->
-    <div class="overlay" id="overlay"></div>
-
-    <!-- Janela de Doações -->
-    <div class="donation-popup" id="donationPopup">
-        <div class="popup-header">
-            <h3>💰 Faça uma doação</h3>
-            <!-- Botão de Fechar -->
-            <button class="close-btn" onclick="fecharPopup()">❌</button>
-        </div>
-        <p>Ajude a manter o projeto no ar. Abaixo está a chave para doações via Pix.</p>
-        
-        <!-- Tabela com chave do Pix -->
-        <table>
-            <tr>
-                <th>Chave Pix Aleatória</th>
-            </tr>
-            <tr>
-                <td>29f9e33d-8a5e-49ea-a2fa-c8ba1abf5771</td>
-            </tr>
-        </table>
-
-      <h3>Feito com ❤️ !Marcos Tutoriais (𝓒𝓥𝓐)🥀</h3>
-      
-        <!-- Botão de cópia -->
-        <button onclick="copiarChave()" class="copy-btn">Copiar Chave</button>
-    </div>
-
-  
-  
-    <script>
-        // Exibir a janela de doações após o carregamento da página
-        window.onload = function() {
-            document.getElementById("donationPopup").style.display = "block";
-            document.getElementById("overlay").style.display = "block";
-        };
-
-        // Função para copiar a chave do Pix
-        function copiarChave() {
-            var texto = document.createElement("input");
-            texto.value = "29f9e33d-8a5e-49ea-a2fa-c8ba1abf5771";  // Chave Pix
-            document.body.appendChild(texto);
-            
-            texto.select();
-            document.execCommand("copy");
-            
-            document.body.removeChild(texto);
-            
-            alert("Chave Pix copiada!");
-        }
-
-        // Função para fechar a janela de doação
-        function fecharPopup() {
-            document.getElementById("donationPopup").style.display = "none";
-            document.getElementById("overlay").style.display = "none";
-        }
-    </script>
-
-</body>
-</html>
-
-
-
-
-<style>
-  body {
-    margin: 0;
-    background-color: #1a1a2e; /* Cor do fundo do site */
-    color: white;
-    font-family: 'Segoe UI', sans-serif;
-    min-height: 100vh;
-    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Borda no topo */
-  }
-
-  .painel-scripts {
-    padding: 5px;
-    overflow-x: hidden;
-  }
-</style>
+     
