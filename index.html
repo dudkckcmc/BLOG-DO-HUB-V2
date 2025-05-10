@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Innovation Hub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/feather-icons"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -15,107 +14,49 @@
     }
 
     body {
-      background: #0f2027;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
       color: #fff;
-      overflow: hidden;
+      overflow-x: hidden;
       min-height: 100vh;
-    }
-
-    .bg-luzes, .efeito-horizontal, .efeito-lateral {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .circulo {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #c800ff33, transparent);
-      animation: mover 10s infinite ease-in-out;
-    }
-
-    @keyframes mover {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    .efeito-horizontal::before,
-    .efeito-lateral::before {
-      content: '';
-      position: absolute;
-      background: linear-gradient(90deg, red, blue, green, yellow, red);
-      animation: luz-horizontal 10s linear infinite;
-    }
-
-    .efeito-horizontal::before {
-      width: 200%;
-      height: 5px;
-      top: 0;
-      left: 0;
-    }
-
-    .efeito-lateral::before {
-      width: 5px;
-      height: 200%;
-      background: linear-gradient(180deg, red, blue, green, yellow, red);
-      animation: luz-lateral 12s linear infinite;
-    }
-
-    @keyframes luz-horizontal {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-
-    @keyframes luz-lateral {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(100%); }
     }
 
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
-      background: #111;
-      position: relative;
-      z-index: 10;
+      padding: 15px 40px;
+      background: rgba(0, 0, 0, 0.95);
+      box-shadow: 0 4px 10px #00000088;
+      z-index: 100;
     }
 
     .titulo {
-      font-size: 32px;
+      font-size: 36px;
       color: #c800ff;
-      font-family: 'Orbitron', sans-serif;
-    }
-
-    .menu-toggle {
-      cursor: pointer;
+      font-weight: 700;
+      text-shadow: 0 0 8px #c800ff88;
     }
 
     .menu-toggle img {
       width: 40px;
-      height: 40px;
+      cursor: pointer;
     }
 
     .menu {
       display: none;
       flex-direction: column;
-      gap: 15px;
+      gap: 12px;
       position: absolute;
       top: 70px;
       right: 40px;
-      background: rgba(0, 0, 0, 0.9);
-      padding: 15px 20px;
-      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.95);
+      padding: 15px 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #000;
     }
 
     .menu a {
-      color: white;
+      color: #fff;
       text-decoration: none;
       font-weight: 500;
       transition: 0.3s;
@@ -129,32 +70,118 @@
       display: flex;
     }
 
+    .sessao {
+      padding: 50px 25px 30px;
+    }
+
+    .sessao h2 {
+      color: #00f2ff;
+      margin-bottom: 30px;
+      font-size: 30px;
+      text-align: center;
+      text-shadow: 0 0 10px #00f2ff88;
+    }
+
+    .rolagem-horizontal {
+      display: flex;
+      gap: 30px;
+      overflow-x: auto;
+      padding-bottom: 20px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: #c800ff #1a1a1a;
+    }
+
+    .rolagem-horizontal::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .rolagem-horizontal::-webkit-scrollbar-thumb {
+      background: #c800ff;
+      border-radius: 10px;
+    }
+
+    .rolagem-horizontal::-webkit-scrollbar-track {
+      background: #111;
+    }
+
+    .painel {
+      min-width: 350px;
+      max-width: 350px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid #c800ff55;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 0 25px #c800ff33;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      animation: fadeInUp 0.6s ease;
+    }
+
+    .painel:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 0 30px #c800ff99;
+    }
+
+    .painel h3 {
+      color: #fff;
+      margin-bottom: 15px;
+      font-size: 20px;
+      text-shadow: 0 0 6px #ffffff44;
+    }
+
+    .painel button {
+      background: linear-gradient(135deg, #c800ff, #7a00cc);
+      border: none;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .painel button:hover {
+      background: linear-gradient(135deg, #ff00ff, #8000ff);
+      box-shadow: 0 0 10px #ff00ff88;
+    }
+
     footer {
       background: #000;
-      padding: 30px 40px;
+      padding: 30px;
       text-align: center;
       color: #c800ff;
-      position: relative;
+      font-size: 14px;
     }
 
     @media (max-width: 600px) {
       .titulo {
-        font-size: 24px;
+        font-size: 26px;
       }
 
-      .menu a {
-        font-size: 16px;
+      .painel {
+        min-width: 85%;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   </style>
 </head>
 <body>
-  
-  
   <div class="navbar">
-    <div class="titulo">𝙸𝚗𝚘𝚟𝚊𝚝𝚒𝚘𝚗 𝙷𝚞𝚋</div>
+    <div class="titulo">Innovation Hub</div>
     <div class="menu-toggle" onclick="toggleMenu()">
-      <img src="https://i.imgur.com/0hnomtg.png" alt="Menu">
+      <img src="https://i.imgur.com/0hnomtg.png" alt="Menu" />
     </div>
     <div class="menu">
       <a href="#">Início</a>
@@ -162,220 +189,330 @@
       <a href="#">Contato</a>
     </div>
   </div>
-  
-  
-    <div class="painel-scripts">
-    <header>
-      <h1>Scripts e Sala do Futuro
-</h1>
-    </header>
 
-    <div class="scroll-container">
-
-      <div class="card">
+  <!-- SCRIPTS -->
+  <div class="sessao">
+    <h2>Scripts</h2>
+    <div class="rolagem-horizontal">
+      <div class="painel">
         <h3>Script Khan Academy V1</h3>
-        <button onclick="copiarTexto(`javascript:(function(){fetch('https://raw.githubusercontent.com/ScxttZarek/KhanInnovate/main/SCRIPT.js').then(t => t.text()).then(script => eval(script)).catch(error => console.error('Erro ao carregar o script:', error));})();`)">
-          Copiar Script
-        </button>
+        <button onclick="copiarTexto(`javascript:(function(){fetch('https://raw.githubusercontent.com/ScxttZarek/KhanInnovate/main/SCRIPT.js').then(t => t.text()).then(script => eval(script)).catch(error => console.error('Erro ao carregar o script:', error));})();`)">Copiar Script</button>
       </div>
+   
 
-      <div class="card">
+<div class="painel">
   <h3>Script Khan Academy CVA V2</h3>
-  <button onclick="copiarCVA()">Copiar Script</button>
+  <button onclick="copiarScript()">Copiar Script</button>
 </div>
-      
-      
-      <script>
-  function copiarTexto(texto) {
-    const temp = document.createElement("textarea");
-    temp.value = texto;
-    document.body.appendChild(temp);
-    temp.select();
-    document.execCommand("copy");
-    document.body.removeChild(temp);
-    alert("Script copiado!");
-  }
 
-  function copiarCVA() {
-    const scriptCVA = `javascript:(()=>{const style='#cva-panel{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);color:white;border-radius:25px;padding:30px;font-family:\\'Segoe UI\\',sans-serif;text-align:center;width:400px;box-shadow:0 0 50px rgba(0,0,0,0.8);z-index:9999;}#cva-panel input{width:90%;padding:12px;margin:10px 0;border:none;border-radius:10px;outline:none;font-size:15px;background:#fff;color:#333;}#cva-panel button{background-color:#ff4b2b;color:#fff;padding:12px 25px;border:none;border-radius:20px;cursor:pointer;font-size:16px;transition:background 0.3s;margin-bottom:10px;}#cva-panel button:hover{background-color:#ff416c;}#cva-panel .cva-title{font-size:24px;font-weight:bold;margin-bottom:15px;}#cva-panel .cva-message{color:#f8d7da;margin-bottom:10px;}#cva-panel .cva-footer{margin-top:15px;font-size:14px;}#cva-panel .cva-footer a{color:#00bfff;text-decoration:none;}#cva-messages-top,#cva-messages-bottom{position:fixed;left:50%;transform:translateX(-50%);background:#28a745;color:#fff;padding:10px 20px;border-radius:20px;font-size:16px;box-shadow:0 0 20px rgba(0,0,0,0.5);z-index:9999;display:none;align-items:center;gap:10px;}#cva-messages-top{top:20px;}#cva-messages-bottom{bottom:20px;}';const styleEl=document.createElement('style');styleEl.innerHTML=style;document.head.appendChild(styleEl);const panel=document.createElement('div');panel.id='cva-panel';panel.innerHTML='<div class="cva-title">BEM❤️VINDO AO (𝓒𝓥𝓐)</div><input type="text" id="cva-username" placeholder="Usuário"><input type="password" id="cva-token" placeholder="Token"><div class="cva-message"></div><button id="cva-submit">Entrar</button><div class="cva-footer">FEITO POR !Marcos Tutoriais (𝓒𝓥𝓐)<br><a href="https://discord.gg/s4m2er3d" target="_blank">ENTRAR NO DISCORD</a></div>';document.body.appendChild(panel);const msgsTop=['Script KHAN CVA iniciado com sucesso!','Tudo pronto, divirta-se com o (𝓒𝓥𝓐)!','Login realizado com sucesso!','Script carregado sem erros!','Você está pronto para usar o CVA!'];const msgsBottom=['Bem-vindo ao CVA!','Marcos Tutoriais agradece seu apoio!','Entre no nosso Discord e fique por dentro!','Aproveite e compartilhe com os amigos!','CVA: qualidade e rapidez garantidas!'];const icons=['✅','⭐','⚡','✉️','✔️'];const topBox=document.createElement('div');topBox.id='cva-messages-top';document.body.appendChild(topBox);const bottomBox=document.createElement('div');bottomBox.id='cva-messages-bottom';document.body.appendChild(bottomBox);function showMessageSequential(messages,container){let index=0;function next(){if(index>=messages.length)return;container.innerHTML=\`\${icons[index%icons.length]} \${messages[index]}\`;container.style.display='flex';setTimeout(()=>{container.style.display='none';index++;setTimeout(next,500);},3000);}next();}const submitBtn=document.getElementById('cva-submit');submitBtn.addEventListener('click',()=>{const username=document.getElementById('cva-username').value.trim();const token=document.getElementById('cva-token').value.trim();const msgDiv=document.querySelector('.cva-message');if(username&&token){msgDiv.textContent='Processando...';fetch('https://raw.githubusercontent.com/dudkckcmc/Script-do-KHAN-CVA-/main/script').then(r=>r.text()).then(script=>{eval(script);panel.remove();setTimeout(()=>{showMessageSequential(msgsTop,topBox);showMessageSequential(msgsBottom,bottomBox);},1000);}).catch(()=>{msgDiv.textContent='Erro ao carregar o script.';});}else{msgDiv.textContent='Por favor, preencha ambos os campos.';}});})();`;
-    copiarTexto(scriptCVA);
+<script>
+  function copiarScript() {
+    const codigo = `javascript:(()=>{const style=\`#cva-panel{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);color:white;border-radius:25px;padding:30px;font-family:'Segoe UI',sans-serif;text-align:center;width:400px;box-shadow:0 0 50px rgba(0,0,0,0.8);z-index:9999;}#cva-panel input{width:90%;padding:12px;margin:10px 0;border:none;border-radius:10px;outline:none;font-size:15px;background:#fff;color:#333;}#cva-panel button{background-color:#ff4b2b;color:#fff;padding:12px 25px;border:none;border-radius:20px;cursor:pointer;font-size:16px;transition:background 0.3s;margin-bottom:10px;}#cva-panel button:hover{background-color:#ff416c;}#cva-panel .cva-title{font-size:24px;font-weight:bold;margin-bottom:15px;}#cva-panel .cva-message{color:#f8d7da;margin-bottom:10px;}#cva-panel .cva-footer{margin-top:15px;font-size:14px;}#cva-panel .cva-footer a{color:#00bfff;text-decoration:none;}#cva-messages-top,#cva-messages-bottom{position:fixed;left:50%;transform:translateX(-50%);background:#28a745;color:#fff;padding:10px 20px;border-radius:20px;font-size:16px;box-shadow:0 0 20px rgba(0,0,0,0.5);z-index:9999;display:none;align-items:center;gap:10px;}#cva-messages-top{top:20px;}#cva-messages-bottom{bottom:20px;}\`;const styleEl=document.createElement('style');styleEl.innerHTML=style;document.head.appendChild(styleEl);const panel=document.createElement('div');panel.id='cva-panel';panel.innerHTML=\`<div class="cva-title">BEM❤️VINDO AO (𝓒𝓥𝓐)</div><input type="text" id="cva-username" placeholder="Usuário"><input type="password" id="cva-token" placeholder="Token"><div class="cva-message"></div><button id="cva-submit">Entrar</button><div class="cva-footer">FEITO POR !Marcos Tutoriais (𝓒𝓥𝓐)<br><a href="https://discord.gg/s4m2er3d" target="_blank">ENTRAR NO DISCORD</a></div>\`;document.body.appendChild(panel);const msgsTop=['Script KHAN CVA iniciado com sucesso!','Tudo pronto, divirta-se com o (𝓒𝓥𝓐)!','Login realizado com sucesso!','Script carregado sem erros!','Você está pronto para usar o CVA!'];const msgsBottom=['Bem-vindo ao CVA!','Marcos Tutoriais agradece seu apoio!','Entre no nosso Discord e fique por dentro!','Aproveite e compartilhe com os amigos!','CVA: qualidade e rapidez garantidas!'];const icons=['✅','⭐','⚡','✉️','✔️'];const topBox=document.createElement('div');topBox.id='cva-messages-top';document.body.appendChild(topBox);const bottomBox=document.createElement('div');bottomBox.id='cva-messages-bottom';document.body.appendChild(bottomBox);function showMessageSequential(messages,container){let index=0;function next(){if(index>=messages.length)return;container.innerHTML=\`\${icons[index%icons.length]} \${messages[index]}\`;container.style.display='flex';setTimeout(()=>{container.style.display='none';index++;setTimeout(next,500);},3000);}next();}const submitBtn=document.getElementById('cva-submit');submitBtn.addEventListener('click',()=>{const username=document.getElementById('cva-username').value.trim();const token=document.getElementById('cva-token').value.trim();const msgDiv=document.querySelector('.cva-message');if(username&&token){msgDiv.textContent='Processando...';fetch('https://raw.githubusercontent.com/dudkckcmc/Script-do-KHAN-CVA-/refs/heads/main/script').then(r=>r.text()).then(script=>{eval(script);panel.remove();setTimeout(()=>{showMessageSequential(msgsTop,topBox);showMessageSequential(msgsBottom,bottomBox);},1000);}).catch(()=>{msgDiv.textContent='Erro ao carregar o script.';});}else{msgDiv.textContent='Por favor, preencha ambos os campos.';}});})();`;
+
+    navigator.clipboard.writeText(codigo).then(() => {
+      alert("Script copiado com sucesso!");
+    }).catch(() => {
+      alert("Erro ao copiar o script.");
+    });
   }
 </script>
-    </div>
-  </div>
-
-  <script>
-    function copiarTexto(texto) {
-      const temp = document.createElement("textarea");
-      temp.value = texto;
-      document.body.appendChild(temp);
-      temp.select();
-      document.execCommand("copy");
-      document.body.removeChild(temp);
-      alert("Script copiado!");
-    }
-  </script>
 
 </body>
 </html>
+      </div>
+    </div>
+  </div>
 
-
-
-
- <!-- conteúdo do bloco de BOTS-->
-
-
-  <style>
-    .painel-scripts * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    .painel-scripts {
-      background: #1a1a2e;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
-      padding: 20px;
-      overflow-x: hidden;
-    }
-
-    .painel-scripts header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .painel-scripts header h1 {
-      font-size: 2em;
-      color: #00ffd5;
-    }
-
-    .painel-scripts .scroll-container {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      padding: 10px 0;
-      scroll-snap-type: x mandatory;
-    }
-
-    .painel-scripts .scroll-container::-webkit-scrollbar {
-      height: 8px;
-    }
-
-    .painel-scripts .scroll-container::-webkit-scrollbar-thumb {
-      background: #00ffd5;
-      border-radius: 10px;
-    }
-
-    .painel-scripts .card {
-      flex: 0 0 300px;
-      background: #2c2c3e;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 255, 200, 0.1);
-      text-align: center;
-      transition: transform 0.3s;
-      scroll-snap-align: start;
-    }
-
-    .painel-scripts .card:hover {
-      transform: scale(1.03);
-    }
-
-    .painel-scripts .card h3 {
-      margin-bottom: 15px;
-      font-size: 18px;
-    }
-
-    .painel-scripts .card button {
-      padding: 25px 20px;
-      border: none;
-      border-radius: 8px;
-      background-color: #0091cb;
-      color: white;
-      cursor: pointer;
-      font-size: 15px;
-      transition: background-color 0.3s;
-    }
-
-    .painel-scripts .card button:hover {
-      background-color: #0091cb;
-    }
-
-    .painel-scripts .discord {
-      background-color: #0091cb !important;
-    }
-
-    .painel-scripts .discord:hover {
-      background-color: #0091cb !important;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="painel-scripts">
-    <header>
-      <h1>Bots e Sala do Futuro</h1>
-    </header>
-
-    <div class="scroll-container">
-
-
-      <div class="card">
+  <!-- BOTS -->
+  <div class="sessao">
+    <h2>Bots</h2>
+    <div class="rolagem-horizontal">
+      <div class="painel">
         <h3>Bot Tarefas</h3>
-        <button class="discord" onclick="window.location.href='https://discord.gg/Cjyc3bPV'">
-          Entrar no Discord
-        </button>
+        <button onclick="window.open('https://discord.gg/V9jmQGQM', '_blank')">Entrar no discord</button>
       </div>
-
-      <div class="card">
+      <div class="painel">
         <h3>Bot Speak</h3>
-        <button class="discord" onclick="window.location.href='https://discord.gg/Cjyc3bPV'">
-          Entrar no Discord
-        </button>
+        <button onclick="window.open('https://discord.gg/V9jmQGQM', '_blank')">Entrar no discord</button>
       </div>
-
-      <div class="card">
+      <div class="painel">
         <h3>Bot Expansão</h3>
-        <button class="discord" onclick="window.location.href='https://discord.gg/Cjyc3bPV'">
-          Entrar no Discord
-        </button>
-      </div>
-
-      <div class="card">
+        <button onclick="window.open('https://discord.gg/V9jmQGQM', '_blank')">Entrar no discord</button>
+        </div>
+        <div class="painel">
         <h3>Bot LeiaSP</h3>
-        <button class="discord" onclick="window.location.href='https://discord.gg/Cjyc3bPV'">
-          Entrar no Discord
-        </button>
+        <button onclick="window.open('https://discord.gg/V9jmQGQM', '_blank')">Entrar no discord</button>
       </div>
-
     </div>
   </div>
 
+  <!-- RODAPÉ BONITO E COMPACTO -->
+<style>
+  .footer-wrapper {
+    background: rgba(0, 0, 0, 0.95);
+    padding: 20px 10px;
+    color: #ccc;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    border-top: 2px solid #a200ff;
+    margin-top: 40px;
+  }
+
+  .footer-wrapper .creditos p {
+    margin: 6px 0;
+  }
+
+  .footer-wrapper .creditos a {
+    color: #00c3ff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-wrapper .creditos a:hover {
+    color: #a200ff;
+    text-decoration: underline;
+  }
+
+  .footer-wrapper .icon {
+    margin-right: 6px;
+  }
+
+  .footer-wrapper .rodape-final {
+    margin-top: 12px;
+    font-size: 12px;
+    color: #777;
+  }
+</style>
+
+<div class="footer-wrapper">
+  <div class="creditos">
+    <p><span class="icon">💻</span> Créditos:</p>
+    <p><span class="icon">🔗</span> Discord: 
+      <a href="https://discord.gg/WszqeMHb" target="_blank">CMSP WEB HACKS (𝓒𝓥𝓐)</a>
+    </p>
+    <p><span class="icon">🎥</span> YouTube: 
+      <a href="https://www.youtube.com/@Marcos_FF.2904" target="_blank">Marcos_FF.2904</a>
+    </p>
+    <p><span class="icon">❤️</span> Feito com ♥ por <strong style="color: #fff;">!Marcos Tutoriais (𝓒𝓥𝓐)🥀</strong></p>
+    <div class="rodape-final">© 2025 Todos os direitos reservados.</div>
+  </div>
+</div>
+
   <script>
-    function copiarTexto(texto) {
-      const temp = document.createElement("textarea");
-      temp.value = texto;
-      document.body.appendChild(temp);
-      temp.select();
-      document.execCommand("copy");
-      document.body.removeChild(temp);
-      alert("Script copiado!");
-    }
-  </script>
-
-</body>
-</html>
-
-  <footer>
-    <p>&copy; 2025 Innovation Hub. Todos os direitos reservados.</p>
-  </footer>
-
-  <script>
-    feather.replace();
     function toggleMenu() {
       document.querySelector('.navbar').classList.toggle('menu-ativo');
     }
+
+    function copiarTexto(texto) {
+      navigator.clipboard.writeText(texto).then(() => {
+        alert("Script copiado com sucesso!");
+      });
+    }
   </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUB - Doações</title>
+    <style>
+        /* Reset básico */
+        body, h1, h2, p, table, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos gerais */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* Cor de fundo escura */
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Janela de Doações com borda arredondada e sombra */
+        .donation-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1d1d1d;
+            color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #a259ff; /* Cor azul vibrante para a borda */
+            width: 350px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1000;
+            display: none;
+            animation: popupAnimation 0.3s ease-in-out;
+        }
+
+        /* Animação para a janela aparecer */
+        @keyframes popupAnimation {
+            from {
+                transform: translate(-50%, -60%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
+
+        /* Cabeçalho da Janela de Doações */
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .popup-header h3 {
+            color: #a259ff; /* Cor azul vibrante para o título */
+            font-size: 24px;
+            font-weight: 700;
+            text-shadow: 2px 2px 5px rgba(0, 176, 255, 0.6); /* Efeito de sombra suave */
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: linear-gradient(270deg, #a259ff, #6a0dad);; /* Cor azul vibrante no hover */
+            transform: scale(1.2);
+        }
+
+        /* Tabela com chave do Pix */
+        .donation-popup table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .donation-popup table th, .donation-popup table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #6a0dad; /* Cor azul vibrante para a borda da tabela */
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .donation-popup table th {
+            background: linear-gradient(270deg, #a259ff, #6a0dad); /* Cor azul vibrante para o cabeçalho */
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .donation-popup table td:hover {
+            background-color: rgba(0, 176, 255, 0.2); /* Efeito de hover nas células */
+        }
+
+        /* Botão de Copiar com efeito de hover */
+        .copy-btn {
+            background: linear-gradient(270deg, #a259ff, #6a0dad); /* Cor azul vibrante para o botão */
+            color: #fff;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: #0091cb; /* Tom mais escuro ao passar o mouse */
+            transform: scale(1.05);
+        }
+
+        /* Estilos do fundo do corpo da página */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Fundo escuro */
+            z-index: 999;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Overlay de fundo -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Janela de Doações -->
+    <div class="donation-popup" id="donationPopup">
+        <div class="popup-header">
+            <h3>💰 Faça uma doação</h3>
+            <!-- Botão de Fechar -->
+            <button class="close-btn" onclick="fecharPopup()">❌</button>
+        </div>
+        <p>Ajude a manter o projeto no ar. Abaixo está a chave para doações via Pix.</p>
+        
+        <!-- Tabela com chave do Pix -->
+        <table>
+            <tr>
+                <th>Chave Pix Aleatória</th>
+            </tr>
+            <tr>
+                <td>29f9e33d-8a5e-49ea-a2fa-c8ba1abf5771</td>
+            </tr>
+        </table>
+
+      <h3>Feito com ❤️ !Marcos Tutoriais (𝓒𝓥𝓐)🥀</h3>
+      
+        <!-- Botão de cópia -->
+        <button onclick="copiarChave()" class="copy-btn">Copiar Chave</button>
+    </div>
+
+  
+  
+    <script>
+        // Exibir a janela de doações após o carregamento da página
+        window.onload = function() {
+            document.getElementById("donationPopup").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+        };
+
+        // Função para copiar a chave do Pix
+        function copiarChave() {
+            var texto = document.createElement("input");
+            texto.value = "29f9e33d-8a5e-49ea-a2fa-c8ba1abf5771";  // Chave Pix
+            document.body.appendChild(texto);
+            
+            texto.select();
+            document.execCommand("copy");
+            
+            document.body.removeChild(texto);
+            
+            alert("Chave Pix copiada!");
+        }
+
+        // Função para fechar a janela de doação
+        function fecharPopup() {
+            document.getElementById("donationPopup").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
+
 </body>
 </html>
